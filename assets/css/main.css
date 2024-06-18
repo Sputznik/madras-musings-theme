@@ -175,6 +175,25 @@ body .header4.navbar-default {
   margin-bottom: 20px;
 }
 
+/* TAG */
+.archive.tag .orbit-btn-load-parent {
+  text-align: center;
+}
+
+.archive.tag .orbit-btn-load-parent button {
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 16px 32px;
+  background: #0070bb;
+  border: 1px solid #0070bb;
+  transition: all .3s;
+}
+
+.archive.tag .orbit-btn-load-parent button:hover {
+  background: #007ccf;
+  border-color: #007ccf;
+}
+
 /* -------------------------- MEDIA QUERIES ------------------------- */
 @media(max-width: 1024px) {
   .articles-grid {
