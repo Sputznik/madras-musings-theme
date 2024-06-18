@@ -1,0 +1,15 @@
+/* DECORATOR */
+.mmus-dec-bf::before,
+.mmus-dec-af::after {
+  content: "";
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 40%;
+  border-bottom: 1px solid #0070bb;
+}
+
+/* NAV */
+body .header4.navbar-default {
+  margin-bottom: 0;
+}
