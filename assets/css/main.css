@@ -161,6 +161,20 @@ body .header4.navbar-default {
   padding-top: 60%;
 }
 
+/* ARCHIVE */
+.archive-header .page-title {
+  color: #0070bb;
+}
+
+.archive .articles-post-list-wrap {
+  margin: 40px 0;
+}
+
+/* CATEGORY */
+.archive.category .articles-grid-sticky {
+  margin-bottom: 20px;
+}
+
 /* -------------------------- MEDIA QUERIES ------------------------- */
 @media(max-width: 1024px) {
   .articles-grid {
