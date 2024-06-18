@@ -194,6 +194,11 @@ body .header4.navbar-default {
   border-color: #007ccf;
 }
 
+/* AUTHOR */
+.archive-header.author-header {
+  margin-bottom: 20px;
+}
+
 /* -------------------------- MEDIA QUERIES ------------------------- */
 @media(max-width: 1024px) {
   .articles-grid {
