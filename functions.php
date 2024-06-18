@@ -17,7 +17,8 @@ if( !defined( 'MMUS_THEME_PATH' ) ) {
 $inc_files = array(
   'lib/class-mmus-theme.php',
   'lib/class-customize-theme.php',
-  'lib/mmus-hooks/mmus-hooks.php'
+  'lib/class-mmus-taxonomy-field.php',
+  'lib/mmus-hooks/mmus-hooks.php',
 );
 
 foreach( $inc_files as $inc_file ){ require_once( $inc_file ); }
