@@ -24,3 +24,77 @@ body .header4.navbar-default {
   margin-bottom: 40px;
   background-color: #e8e8e8;
 }
+
+/* ORBIT TEMPLATES */
+.orbit-three-grid .post-categories {
+  font-size: 14px;
+}
+
+.articles-four-grid,
+.articles-grid-sticky {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 20px;
+}
+
+.orbit-article-db .orbit-thumbnail-bg {
+  min-height: 250px;
+}
+
+.articles-two-grid .post-desc,
+.articles-three-grid .post-desc {
+  padding: 20px 0;
+}
+
+.articles-two-grid .orbit-article-db {
+  border: none;
+}
+
+.articles-grid-sticky .sticky {
+  grid-row: 1 / 3;
+  grid-column: 1 / 2;
+}
+
+.articles-grid-sticky .sticky .orbit-thumbnail-bg {
+  min-height: 500px;
+}
+
+.articles-list {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr;
+}
+
+.articles-list .orbit-article-db {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 125px;
+}
+
+.articles-list .post-title {
+  margin-top: 0;
+}
+
+.articles-list .orbit-thumbnail-bg {
+  min-height: 0;
+  align-self: start;
+}
+
+.articles-list .orbit-thumbnail-bg::after {
+  content: '';
+  display: block;
+  padding-top: 60%;
+}
+
+/* -------------------------- MEDIA QUERIES ------------------------- */
+@media(max-width: 1024px) {
+  .articles-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 426px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+}
