@@ -5,7 +5,22 @@
  */
 class MMUS_TAXONOMY_FIELD {
 
+  private $fields;
+
   public function __construct() {
+    $this->fields = array(
+      'mmus_category_pdf' => array(
+        'title'        => 'PDF',
+        'behaviour'    => 'mmus-taxonomy-pdf',
+        'container_id' => 'category-pdf-container'
+      ),
+      'mmus_category_image' => array(
+        'title'        => 'Featured Image',
+        'behaviour'    => 'mmus-taxonomy-image',
+        'container_id' => 'category-image-container'
+      )
+    );
+
     if( is_admin() ) {
       add_action( 'admin_enqueue_scripts', array( $this, 'admin_assets' ) );
 
@@ -14,8 +29,9 @@ class MMUS_TAXONOMY_FIELD {
       add_action( 'category_edit_form_fields', array( $this, 'category_edit_screen' ), 10, 2  );
 
       // SAVE CUSTOM FIELDS
-      add_action( 'created_category', array( $this, 'save_field' ), 10, 1 );
-      add_action( 'edited_category', array( $this, 'update_field' ), 10, 1 );
+      add_action( 'created_category', array( $this, 'save_fields' ), 10, 1 );
+      add_action( 'edited_category', array( $this, 'update_fields' ), 10, 1 );
+
     }
   }
 
@@ -27,56 +43,39 @@ class MMUS_TAXONOMY_FIELD {
   }
 
   // RENDERS FIELD IN CATEGORY CREATE SCREEN
-  function category_create_screen( $taxonomy ){ ?>
-    <div class="form-field" style="margin-top:35px">
-      <div id="category-image-container" style="padding:0px 16px 10px 0px;"></div>
-      <p>
-        <a href="#" data-behaviour=mmus-taxonomy-image class="button button-secondary"><?php _e('Set Featured Image'); ?></a>
-        &nbsp; &nbsp;
-        <a href="#" data-behaviour=mmus-taxonomy-image style="display:none"><?php _e('Remove Featured Image'); ?></a>
-      </p>
-      <input type="hidden" name="mmus_category_image" id="mmus_category_image" value="" />
-    </div> <?php
+  function category_create_screen( $taxonomy ){
+    foreach ( $this->fields as $field => $meta ){
+      include( 'templates/create_screen.php');
+    }
   }
 
   // RENDERS FIELD IN CATEGORY EDIT SCREEN
-  function category_edit_screen( $term, $taxonomy ){ ?>
-    <tr class="form-field term-group-wrap">
-      <th scope="row">
-        <label for="mmus_category_image">Featured Image</label>
-      </th>
-      <td>
-      <?php $image_url = get_term_meta ( $term -> term_id, 'mmus_category_image', true ); ?>
-      <div id="category-image-container">
-        <?php if ( $image_url ) : ?>
-          <img src="<?php _e( $image_url );?>" alt="cat_featured_img" style="max-width:100%">
-        <?php endif; ?>
-      </div>
-      <p>
-        <a href="#" data-behaviour=mmus-taxonomy-image class="button button-secondary"><?php _e('Set Featured Image'); ?></a>
-        &nbsp; &nbsp;
-        <a href="#" data-behaviour=mmus-taxonomy-image style="<?php $image_url ? '' : _e('display:none');?>"><?php _e('Remove Featured Image'); ?></a>
-        <input type="hidden" name="mmus_category_image" id="mmus_category_image" value="<?php $image_url ? _e($image_url) : '';?>" />
-      </p>
-      </td>
-    </tr><?php
-  }
-
-  function save_field( $term_id ){
-    if( isset( $_POST['mmus_category_image'] ) && '' !== $_POST['mmus_category_image'] ){
-      $image = $_POST['mmus_category_image'];
-      add_term_meta( $term_id, 'mmus_category_image', $image, true);
+  function category_edit_screen( $term, $taxonomy ){
+    foreach ( $this->fields as $field => $meta ){
+      include( 'templates/edit_screen.php');
     }
   }
 
-  function update_field( $term_id ){
-    if( isset( $_POST['mmus_category_image'] ) && '' !== $_POST['mmus_category_image'] ){
-      $image = $_POST['mmus_category_image'];
-      update_term_meta( $term_id, 'mmus_category_image', $image );
-    } else {
-      update_term_meta( $term_id, 'mmus_category_image', '' );
+  function update_fields( $term_id ){
+    foreach ( $this->fields as $field => $meta ){
+      if( isset( $_POST[$field] ) && '' !== $_POST[$field] ){
+        $field_value = $_POST[$field];
+        update_term_meta( $term_id, $field, $field_value );
+      } else {
+        update_term_meta( $term_id, $field, '' );
+      }
     }
   }
+
+  function save_fields( $term_id ){
+    foreach ( $this->fields as $field => $meta ){
+      if( isset( $_POST[$field] ) && '' !== $_POST[$field] ){
+        $field_value = $_POST[$field];
+        add_term_meta( $term_id, $field, $field_value, true);
+      }
+    }
+  }
+
 }
 
 new MMUS_TAXONOMY_FIELD();
