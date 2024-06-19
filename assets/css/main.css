@@ -175,11 +175,19 @@ body .header4.navbar-default {
   margin-bottom: 20px;
 }
 
+.archive.category .download-pdf > a {
+  margin-top: 30px;
+  display: inline-block;
+  text-decoration: none;
+}
+
 /* TAG */
+.archive.category .download-pdf,
 .archive.tag .orbit-btn-load-parent {
   text-align: center;
 }
 
+.archive.category .download-pdf > a,
 .archive.tag .orbit-btn-load-parent button {
   color: #ffffff;
   border-radius: 4px;
@@ -189,6 +197,7 @@ body .header4.navbar-default {
   transition: all .3s;
 }
 
+.archive.category .download-pdf > a:hover,
 .archive.tag .orbit-btn-load-parent button:hover {
   background: #007ccf;
   border-color: #007ccf;
