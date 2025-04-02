@@ -12,7 +12,7 @@ get_header();
           <div class="single-post-header">
             <h1 class="post-title mmus-dec-af"><?php the_title();?></h1>
             <div class="post-meta">
-              <span>by <?php the_author_link();?></span>
+              <?php echo do_shortcode("[mmus_author_posts_link]"); ?>
               <?php if( has_tag() ):?>
                 <span class="post-tags">| Tagged in <?php the_tags( '', ', ', '' ); ?></span>
               <?php endif;?>

@@ -44,10 +44,6 @@ body .header4.navbar-default {
   line-height: 1.3;
 }
 
-.single-post-header span {
-  display: inline-block;
-}
-
 .single-post-header a {
   text-transform: capitalize;
 }
