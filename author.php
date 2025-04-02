@@ -3,7 +3,16 @@
  * The template for displaying author page
  */
 get_header();
-$author = $wp_query->get_queried_object();
+$author        = $wp_query->get_queried_object();
+$shortcode_str = "[orbit_query posts_per_page='9' style='grid3-with-cat' ";
+
+if( isset( $author->type ) && $author->type == 'wpuser' ){
+  $shortcode_str .= "author='".$author->ID."'";
+} else {
+  $shortcode_str .= "tax_query='author:cap-".$author->user_nicename."'";
+}
+
+$shortcode_str .= "]";
 ?>
 <div class="author-header archive-header">
   <div class="container">
@@ -11,7 +20,7 @@ $author = $wp_query->get_queried_object();
     <div class="page-description text-center"><?php _e( $author->description ); ?></div>
   </div>
 </div>
-<?php $shortcode_str = do_shortcode("[orbit_query posts_per_page='9' style='grid3-with-cat' author='".$author->ID."']"); ?>
+<?php $shortcode_str = do_shortcode( $shortcode_str ); ?>
 <?php if( strlen( $shortcode_str ) > 0 ): ?>
   <div class="container">
     <h3 class="text-center author-posts-headline">Articles by the author</h3>
