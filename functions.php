@@ -2,7 +2,7 @@
 
 /*  CONSTANTS */
 if( !defined( 'MMUS_THEME_VERSION' ) ) {
-  define( 'MMUS_THEME_VERSION', time() );
+  define( 'MMUS_THEME_VERSION', '1.0.1' );
 }
 
 if( !defined( 'MMUS_THEME_URI' ) ) {
