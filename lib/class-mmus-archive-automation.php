@@ -73,7 +73,7 @@ class MMUS_ARCHIVE_AUTOMATION {
           <li>
             <p>
               <a href="<?php echo $volume_archive_url; ?>" target="_blank" rel="noopener noreferrer">
-                Archives of Vol. <?php echo $this->integer_to_roman_numeral($volume); ?> (<?php echo $year_range; ?>)
+                Archives of Vol. <?php echo $this->integer_to_roman_numeral($volume); ?> (Year <?php echo $year_range; ?>)
               </a>
             </p>
         </li>
