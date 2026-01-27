@@ -19,7 +19,8 @@ $inc_files = array(
   'lib/class-customize-theme.php',
   'lib/class-mmus-taxonomy-field.php',
   'lib/mmus-hooks/mmus-hooks.php',
-  'lib/class-mmus-latest-terms.php'
+  'lib/class-mmus-latest-terms.php',
+  'lib/class-mmus-archive-automation.php'
 );
 
 foreach( $inc_files as $inc_file ){ require_once( $inc_file ); }
